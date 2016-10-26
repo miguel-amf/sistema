@@ -1,0 +1,26 @@
+<%= form_for @curso do |f| %>
+
+	<div class="field">
+		Nome: <%= f.text_field :nome %>
+	</div>
+	<div class="field">
+		<%= f.text_field :codigo %>
+	</div>
+	<div class="field">
+		<%= f.text_field :titulo %>
+	</div>
+	<div class="field">
+		<%= f.number_field :creditos %>
+	</div>
+	<div class="field">
+		<%= f.select :turno, options_for_select([ "Diurno", "Noturno" ], "Diurno") %>
+	</div>
+	<div class="field">
+		<%= f.select :modalidade, options_for_select([ "Presencial", "Distancia" ], "Presencial") %>
+	</div>
+
+	<div class="actions">
+    	<%= f.submit "Adicionar curso" %>
+  	</div>
+
+<%end%>

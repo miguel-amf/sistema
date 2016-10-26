@@ -1,0 +1,6 @@
+<% @disciplinas.each do |single| %>
+<br>
+<%= single.nome%>	
+<% end %>
+<br>
+<%= link_to "Adicionar nova disciplina", :action => "new" %>

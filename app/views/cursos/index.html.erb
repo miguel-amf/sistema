@@ -1,0 +1,6 @@
+<% @cursos.each do |single| %>
+<br>
+<%= single.nome%>	
+<% end %>
+<br>
+<%= link_to "Adicionar novo curso", :action => "new" %>

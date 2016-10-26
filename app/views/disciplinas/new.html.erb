@@ -1,0 +1,22 @@
+<h2>Adicionar disciplina</h2>
+<%= form_for @disciplina do |f| %>
+
+	<div class="field">
+		Nome: <%= f.text_field :nome %>
+	</div>
+	<div class="field">
+		Codigo:<%= f.text_field :codigo %>
+	</div>
+	<div class="field">
+		Departamento<%= f.text_field :departamento %>
+	</div>
+	<div class="field">
+		Créditos<%= f.number_field :creditos %>
+	</div>
+	
+
+	<div class="actions">
+    	<%= f.submit "Adicionar disciplina" %>
+  	</div>
+
+<%end%>

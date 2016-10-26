@@ -1,0 +1,23 @@
+<h2>Adicionar novo aluno</h2>
+<%= form_for @aluno do |f| %>
+
+	<div class="field">
+		Nome: <%= f.text_field :nome %>
+	</div>
+	<div class="field">
+		Codigo:<%= f.text_field :email %>
+	</div>
+	<div class="field">
+		Curso<%= f.select(:curso_id, Curso.all.collect {|curso| [ curso.nome, curso.id ] } ) %>
+	</div>
+	<div class="field">
+		Senha<%= f.password_field :password_digest %>
+	</div>
+	
+
+	<div class="actions">
+    	<%= f.submit "Adicionar aluno" %>
+  	</div>
+
+<%end%>
+

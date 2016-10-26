@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026043114) do
+ActiveRecord::Schema.define(version: 20161026044221) do
+
+  create_table "alunos", force: :cascade do |t|
+    t.string  "nome"
+    t.string  "email"
+    t.string  "semestre"
+    t.integer "curso_id"
+    t.string  "password_digest"
+    t.index ["curso_id"], name: "index_alunos_on_curso_id"
+  end
 
   create_table "cursos", force: :cascade do |t|
     t.string  "codigo"

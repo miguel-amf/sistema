@@ -1,0 +1,10 @@
+<h1><%= @disciplina.nome%></h1>
+
+<% @disciplina.resultados.each do |resultado| %>
+	<%=resultado.semestre%>
+	<%=resultado.mencao%>
+	<br>
+	<%=resultado.comentario%>
+	<br>	
+<% end %>
+

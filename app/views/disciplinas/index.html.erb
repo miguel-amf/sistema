@@ -1,6 +1,7 @@
 <% @disciplinas.each do |single| %>
 <br>
-<%= single.nome%>	
+<%= link_to single.nome, disciplina_path(single) %>
+, número de avaliações cadastradas <%=single.resultados.length%>	
 <% end %>
 <br>
 <%= link_to "Adicionar nova disciplina", :action => "new" %>

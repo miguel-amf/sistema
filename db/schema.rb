@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026044221) do
+ActiveRecord::Schema.define(version: 20161026051111) do
 
   create_table "alunos", force: :cascade do |t|
     t.string  "nome"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20161026044221) do
     t.string  "codigo"
     t.integer "creditos"
     t.string  "departamento"
+  end
+
+  create_table "resultados", force: :cascade do |t|
+    t.string  "mencao"
+    t.text    "comentario"
+    t.string  "semestre"
+    t.integer "aluno_id"
+    t.integer "disciplina_id"
+    t.index ["aluno_id"], name: "index_resultados_on_aluno_id"
+    t.index ["disciplina_id"], name: "index_resultados_on_disciplina_id"
   end
 
 end

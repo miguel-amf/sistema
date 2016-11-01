@@ -1,5 +1,6 @@
 <% @cursos.each do |single| %>
 <br>
+<%= link_to single.nome, curso_path(single) %>
 <%= single.nome%> com <%= single.alunos.length%> alunos cadastrados	
 <% end %>
 <br>

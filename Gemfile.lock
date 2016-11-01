@@ -80,6 +80,8 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.7.0)
+    faker (1.6.6)
+      i18n (~> 0.5)
     ffi (1.9.14)
     formatador (0.2.5)
     gherkin (4.0.0)
@@ -238,6 +240,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   cucumber-rails
   database_cleaner
+  faker
   guard-rspec
   jbuilder (~> 2.5)
   jquery-rails

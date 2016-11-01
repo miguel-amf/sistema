@@ -1,0 +1,8 @@
+Informações sobre 
+<h3><%=@aluno.nome%></h3>
+<% @aluno.resultados.each do |resultado| %>
+	<br>
+	<%=resultado.disciplina.nome%> <%=resultado.mencao%> <%=resultado.comentario%>
+	<br>
+<% end %>
+<h1>Você já </h1>

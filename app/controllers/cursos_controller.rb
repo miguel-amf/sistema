@@ -14,6 +14,9 @@ class CursosController < ApplicationController
     @cursos = Curso.all    
   end
 
+  def show
+    @curso = Curso.find(params[:id])    
+  end
   
   def curso_params
     params.require(:curso).permit(:nome, :creditos,

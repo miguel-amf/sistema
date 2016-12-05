@@ -7,7 +7,18 @@ Insira sua nota de:
 		<div class="field">
 	    	<%= f.label :mencao %>
 	    	<%= f.select(:mencao, Resultado.possiveis_mencoes) %>
-	  	</div>
+	  </div>
+
+	  <div class="field">
+	    	<%= f.label :semestre %>
+	    	<%= f.select(:semestre, Aluno.possiveis_semestres) %>
+	  </div>
+
+		<div class="field">
+	    	<%= f.label :comentario %>
+	    	<%= f.text_area(:comentario) %>
+	  </div>
+	  
 	  	
 	  	<%= f.hidden_field :disciplina_id, :value => @disciplina.id %>
 

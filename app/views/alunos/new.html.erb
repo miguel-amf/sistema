@@ -1,23 +1,5 @@
-<h2>Adicionar novo aluno</h2>
-<%= form_for @aluno do |f| %>
+<h1>New Aluno</h1>
 
-	<div class="field">
-		Nome: <%= f.text_field :nome %>
-	</div>
-	<div class="field">
-		Codigo:<%= f.text_field :email %>
-	</div>
-	<div class="field">
-		Curso<%= f.select(:curso_id, Curso.all.collect {|curso| [ curso.nome, curso.id ] } ) %>
-	</div>
-	<div class="field">
-		Senha<%= f.password_field :password_digest %>
-	</div>
-	
+<%= render 'form', aluno: @aluno %>
 
-	<div class="actions">
-    	<%= f.submit "Adicionar aluno" %>
-  	</div>
-
-<%end%>
-
+<%= link_to 'Back', alunos_path %>

@@ -10,15 +10,17 @@ class ResultadosController < ApplicationController
     #binding.pry
     @resultado = Resultado.new
     @resultado.aluno_id = current_user.id
-    @resultado.mencao = aluno_params[:nota]
-    @resultado.disciplina_id = aluno_params[:disciplina_id]
+    @resultado.mencao = resultado_params[:nota]
+    @resultado.disciplina_id = resultado_params[:disciplina_id]
+    @resultado.comentario = resultado_params[:comentario]
+    @resultado.semestre = resultado_params[:semestre]
     @resultado.save
-    # redirect_to aluno_path(current_user), notice: 'Resultado was successfully created.' 
+    redirect_to aluno_path(current_user), notice: 'Resultado was successfully created.' 
 
   end
 
-  def aluno_params
-        params.require(:resultado).permit(:nota, :disciplina_id)
+  def resultado_params
+        params.require(:resultado).permit(:nota, :disciplina_id, :semestre, :comentario)
   end
 
 end

@@ -1,10 +1,29 @@
 <table>
 	<thead>
 		<tr>
-			<th>Código</th>
-			<th width=450>Nome</th>
-			<th>Créditos</th>
-			<th>Departamento</th>
+			<th>
+				Código
+				<%= link_to "&#9660".html_safe, disciplinas_path({:sort_by => 'codigo', :sentido => 'DESC'}) %>
+				<%= link_to "&#9650".html_safe, disciplinas_path({:sort_by => 'codigo', :sentido => 'ASC'}) %>
+					
+				</th>
+			<th width=450>
+				Nome
+				<%= link_to "&#9660".html_safe, disciplinas_path({:sort_by => 'nome', :sentido => 'DESC'}) %>
+				<%= link_to "&#9650".html_safe, disciplinas_path({:sort_by => 'nome', :sentido => 'ASC'}) %>
+					
+			</th>
+			<th>
+				Créditos
+				<%= link_to "&#9660".html_safe, disciplinas_path({:sort_by => 'creditos', :sentido => 'DESC'}) %>
+				<%= link_to "&#9650".html_safe, disciplinas_path({:sort_by => 'creditos', :sentido => 'ASC'}) %>
+					
+			</th>
+			<th>
+				Departamento
+				<%= link_to "&#9660".html_safe, disciplinas_path({:sort_by => 'departamento', :sentido => 'DESC'}) %>					
+				<%= link_to "&#9650".html_safe, disciplinas_path({:sort_by => 'departamento', :sentido => 'ASC'}) %>
+			</th>
 		</tr>
 	</thead>
 	<tbody>

@@ -1,8 +1,8 @@
 class DisciplinasController < ApplicationController
 
 def new
-    @disciplina  = Disciplina.new
-  end
+  @disciplina  = Disciplina.new
+end
 
 def create
   @disciplina = Disciplina.new(disciplina_params) 
@@ -11,7 +11,13 @@ def create
 end
 
   def index
-    @disciplinas = Disciplina.all.sort_by {|disciplina| disciplina.resultados.length}.reverse!   
+    #binding.pry
+    if params[:sort_by]
+      @disciplinas = Disciplina.all.order("#{params[:sort_by]}" + " #{params[:sentido]}")
+    else
+      @disciplinas = Disciplina.all.sort_by {|disciplina| disciplina.nome}           
+    end
+    
   end
 
 

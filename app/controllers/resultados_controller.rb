@@ -10,7 +10,7 @@ class ResultadosController < ApplicationController
     #binding.pry
     @resultado = Resultado.new
     @resultado.aluno_id = current_user.id
-    @resultado.mencao = resultado_params[:nota]
+    @resultado.mencao = resultado_params[:mencao]
     @resultado.disciplina_id = resultado_params[:disciplina_id]
     @resultado.comentario = resultado_params[:comentario]
     @resultado.semestre = resultado_params[:semestre]
@@ -20,7 +20,7 @@ class ResultadosController < ApplicationController
   end
 
   def resultado_params
-        params.require(:resultado).permit(:nota, :disciplina_id, :semestre, :comentario)
+        params.require(:resultado).permit(:mencao, :disciplina_id, :semestre, :comentario)
   end
 
 end

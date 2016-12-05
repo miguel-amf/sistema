@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :cursos
   resources :disciplinas
-  resources :alunos
+  resources :alunos, except: [:index] do
+    resources :resultados
+  end
 
   
 end

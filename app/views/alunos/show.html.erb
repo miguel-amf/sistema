@@ -1,8 +1,29 @@
-Informações sobre 
+Informações do Aluno: 
 <h3><%=@aluno.nome%></h3>
-<% @aluno.resultados.each do |resultado| %>
-	<br>
-	<%=resultado.disciplina.nome%> <%=resultado.mencao%> <%=resultado.comentario%>
-	<br>
-<% end %>
-<h1>Você já </h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Semestre</th>
+			<th width=450>Nome</th>
+			<th>Menção</th>
+			<th>Comentário</th>
+		</tr>
+	</thead>
+	<tbody>
+<% Resultado.ordena_por_semestre(@aluno.resultados).reverse.each do |resultado| %>
+		<tr>
+			<td align="center"><%=resultado.semestre%></td>
+			<td width=550><%=resultado.disciplina.nome%></td>
+			<td align="center"><%=resultado.mencao%></td>
+			<td align="center"><%=resultado.comentario%></td>
+			
+		</tr>
+	<%end%>
+	</tbody>
+
+</table>
+
+
+<br>
+<h1>Você já concluiu: <%=@aluno.conta_creditos%> créditos </h1>

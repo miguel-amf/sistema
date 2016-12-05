@@ -1,7 +1,22 @@
-<% @disciplinas.each do |single| %>
-<br>
-<%= link_to single.nome, disciplina_path(single) %>
-, número de avaliações cadastradas <%=single.resultados.length%>	
-<% end %>
-<br>
-<%= link_to "Adicionar nova disciplina", :action => "new" %>
+<table>
+	<thead>
+		<tr>
+			<th>Código</th>
+			<th width=450>Nome</th>
+			<th>Créditos</th>
+			<th>Departamento</th>
+		</tr>
+	</thead>
+	<tbody>
+	<%@disciplinas.each do |turma|%>
+		<tr>
+			<td align="center"><%=turma.codigo%></td>
+			<td width=550><%=turma.nome%></td>
+			<td align="center"><%=turma.creditos%></td>
+			<td align="center"><%=turma.departamento.strip[13..70]%></td>
+			
+		</tr>
+	<%end%>
+	</tbody>
+
+</table>

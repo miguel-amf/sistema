@@ -1,7 +1,23 @@
-<% @cursos.each do |single| %>
-<br>
-<%= link_to single.nome, curso_path(single) %>
-<%= single.nome%> com <%= single.alunos.length%> alunos cadastrados	
-<% end %>
-<br>
-<%= link_to "Adicionar novo curso", :action => "new" %>
+<div align="center">
+	<%= link_to "Adicionar novo curso", :action => "new" %>
+</div>
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Número de alunos cadastrados</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @cursos.sort_by {|curso| curso.nome }.each do |single| %>
+		<tr>
+			<td align="center"><%= link_to single.nome, curso_path(single) %></td>
+			<td align="center"><%= single.alunos.length%></td>
+			
+		</tr>
+	<%end%>
+	</tbody>
+
+</table>

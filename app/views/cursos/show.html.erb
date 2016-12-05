@@ -1,10 +1,10 @@
-<h1><%= @curso.nome.titleize %></h1>
+<h1><%= @curso.nome.titleize %>: 
+	Número de créditos exigidos <%= @curso.creditos%>
+	Número de alunos cadastrados <%= @curso.alunos.length%>		
+</h1>
+
 <br>
-Número de créditos exigidos <%= @curso.creditos%>
-<br>
-Número de alunos cadastrados <%= @curso.alunos.length%>
-<br>
-<%@curso.encontra_resultados.each do |resultado|%>
+<%@curso.encontra_resultados_de_curso.each do |resultado|%>
 	<%=resultado.disciplina.nome%>:<%=resultado.mencao%>
 <br>
 

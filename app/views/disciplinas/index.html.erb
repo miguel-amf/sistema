@@ -21,8 +21,13 @@
 			</th>
 			<th>
 				Departamento
-				<%= link_to "&#9660".html_safe, disciplinas_path({:sort_by => 'departamento', :sentido => 'DESC'}) %>					
+				<%= link_to "&#9660".html_safe, disciplinas_path({:sort_by => 'departamento', :sentido => 'DESC'}) %>
 				<%= link_to "&#9650".html_safe, disciplinas_path({:sort_by => 'departamento', :sentido => 'ASC'}) %>
+			</th>
+			<th>
+				Número de avaliações
+				<%= link_to "&#9660".html_safe, disciplinas_path({:sort_by => 'numero_avaliacoes', :sentido => 'DESC'}) %>
+				<%= link_to "&#9650".html_safe, disciplinas_path({:sort_by => 'numero_avaliacoes', :sentido => 'ASC'}) %>
 			</th>
 		</tr>
 	</thead>
@@ -30,10 +35,10 @@
 	<%@disciplinas.each do |turma|%>
 		<tr>
 			<td align="center"><%=turma.codigo%></td>
-			<td width=550><%=turma.nome%></td>
+			<td width=550><%= link_to turma.nome, disciplina_path({:id => "#{turma.id}"}) %></td>
 			<td align="center"><%=turma.creditos%></td>
 			<td align="center"><%=turma.departamento.strip[13..70]%></td>
-			
+			<td align="center"><%=turma.numero_avaliacoes%></td>
 		</tr>
 	<%end%>
 	</tbody>

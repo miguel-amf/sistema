@@ -1,0 +1,6 @@
+<% @alunos.each do |single| %>
+<br>
+<%= link_to single.nome, aluno_path(single) %>
+<% end %>
+<br>
+<%= link_to "Adicionar novo aluno", :action => "new" %>

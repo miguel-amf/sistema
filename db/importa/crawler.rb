@@ -1,6 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
-
+require 'csv'
 # doc = Nokogiri::HTML(open("https://matriculaweb.unb.br/graduacao/oferta_dep.aspx?cod=1"))
 # aa = doc.css('tr.PadraoMenor a')
 # bb = aa.map {|link| link['href']}
@@ -115,7 +115,7 @@ links_bons.each do |link|
   tabela = pagina.css('table.framecinza')[0]
   nomes_departamentos <<  pagina.css('table.framecinza tr')[0].text.split(/ |\_/).map(&:capitalize).join(" ")
   creditos << tabela.css('td')[2].children.text
-  puts tabela.css('td')[1].children.text
+  #puts tabela.css('td')[1].children.text
 end
 
 nomes_departamentos = nomes_departamentos.map { |e| e.match(/(Departamento: )(.+)(\s*)/)[1]  }

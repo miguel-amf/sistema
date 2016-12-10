@@ -29,6 +29,10 @@ class AlunosController < ApplicationController
     @aluno = Aluno.find(params[:id])
   end
 
+  def index
+    @alunos = Aluno.all
+  end
+
 private
     # Use callbacks to share common setup or constraints between actions.
     def set_aluno

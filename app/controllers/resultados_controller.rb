@@ -19,6 +19,11 @@ class ResultadosController < ApplicationController
 
   end
 
+  def index
+    #binding.pry
+    @resultados = Resultado.all
+  end
+
   def resultado_params
         params.require(:resultado).permit(:mencao, :disciplina_id, :semestre, :comentario)
   end

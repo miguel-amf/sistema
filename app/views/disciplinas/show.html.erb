@@ -1,10 +1,22 @@
 <h1><%= @disciplina.nome%></h1>
-
+<br>
+<table>
+	<thead>
+		<tr>
+			<th>Semestre</th>
+			<th>Menção</th>
+			<th>Comentário</th>
+		</tr>
+	</thead>
+	<tbody>
 <% Resultado.ordena_por_semestre(@disciplina.resultados).reverse.each do |resultado| %>
-	<%=resultado.semestre%>
-	<%=resultado.mencao%>
-	<br>
-	<%=resultado.comentario%>
-	<br>	
-<% end %>
+		<tr>
+			<td align="center"><%=resultado.semestre%></td>
+			<td align="center"><%=resultado.mencao%></td>
+			<td align="center"><%=resultado.comentario%></td>
+			
+		</tr>
+	<%end%>
+	</tbody>
 
+</table>

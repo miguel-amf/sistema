@@ -18,5 +18,5 @@ class Resultado < ActiveRecord::Base
   def self.ordena_por_semestre(resultados)
     resultados.sort { |a,b| a.semestre_ordenavel <=> b.semestre_ordenavel }    
   end
-
+  
 end

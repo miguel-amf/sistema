@@ -23,7 +23,11 @@ Informações do Aluno:
 	</tbody>
 
 </table>
+<%@aluno.num_semestres = 3%>
+<h3>Você já concluiu: <%=@aluno.conta_creditos%> créditos </h3>
+<h3>Créditos faltantes: <%=@aluno.creditos_faltantes%> créditos </h3>
+<h3>Velocidade estimada no(s) último(s) <%=@aluno.num_semestres%> semestre(s): <%=@aluno.velocidade%> crédito(s) por semestre</h3>
+<h3>Tempo estimado para a conclusão do curso: <%=@aluno.tempo_estimado%> semestre(s)</h3>
+<br>
 <%=link_to "Adicionar Resultado", disciplinas_path %>
 
-<br>
-<h1>Você já concluiu: <%=@aluno.conta_creditos%> créditos </h1>

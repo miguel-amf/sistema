@@ -1,4 +1,4 @@
-
+require 'csv'
 
 data = CSV.read("./db/importa/disciplinas.csv")
 header = ["nome","codigo","creditos", "departamento"]
@@ -11,5 +11,4 @@ end
 disciplinas.each do |course|
   aa = Disciplina.new(course)
   aa.save
-  puts aa.nome
 end

@@ -12,8 +12,8 @@
 	            <span class="people-details"><%=@aluno.curso.nome%></span>
 	            <span class="people-details"><%=@aluno.conta_creditos%> Créditos concluidos</span>
 	            <span class="people-details"><%=@aluno.creditos_faltantes%> Créditos a concluir</span>
-	            <span class="people-details"><%=@aluno.velocidade%> crédito(s) por semestre</span>
-	            <span class="people-details"><%=@aluno.tempo_estimado%> semestre(s) para concluir</span>
+	            <span class="people-details"><%="%10.3g" % @aluno.velocidade%> créditos por semestre</span>
+	            <span class="people-details"><%="%10.3g" % @aluno.tempo_estimado%> semestre(s) para concluir</span>
 	            <span class="people-details"><%=link_to "Cadastrar Resultado", disciplinas_path %></span>
 	        </div>
         </div>
@@ -26,7 +26,8 @@
 								<tr>
 									<th>Semestre</th>
 									<th width=450>Nome</th>
-									<th>Menção</th>
+									<th width=60>Créditos</th>
+									<th width=50>Menção</th>
 									<th>Comentário</th>
 								</tr>
 							</thead>
@@ -35,6 +36,7 @@
 									<tr>
 										<td align="center"><%=resultado.semestre%></td>
 										<td width=550><%=resultado.disciplina.nome%></td>
+										<td align="center"><%=resultado.disciplina.creditos%></td>
 										<td align="center"><%=resultado.mencao%></td>
 										<td align="center"><%=resultado.comentario%></td>	
 									</tr>

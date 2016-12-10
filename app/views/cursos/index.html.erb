@@ -6,6 +6,7 @@
 <table>
 	<thead>
 		<tr>
+		    <th>Código</th>
 			<th>Nome</th>
 			<th>Créditos</th>
 			<th>Título</th>
@@ -16,7 +17,7 @@
 	</thead>
 	<tbody>
 		<% @cursos.sort_by {|curso| curso.nome }.each do |single| %>
-		<tr>
+		<tr><td align="center"><%= single.codigo%></td>
 			<td align="center"><%= link_to single.nome, curso_path(single) %></td>
 			<td align="center"><%= single.creditos%></td>
 			<td align="center"><%= single.titulo%></td>

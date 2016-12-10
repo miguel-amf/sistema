@@ -1,6 +1,6 @@
 class AlunosController < ApplicationController
   before_action :set_aluno, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, :except => [:new, :create]
+  before_filter :authorize, :except => [:new, :create]
 
 
   def new
@@ -41,7 +41,11 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def aluno_params
-      params.require(:aluno).permit(:nome, :password_digest, :semestre, :curso)
+      params.require(:aluno).permit(:nome,
+       :password_digest,
+       :semestre,
+       :curso,
+       :foto)
     end
 
 end

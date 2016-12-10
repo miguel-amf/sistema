@@ -31,3 +31,52 @@ Informações do Aluno:
 <br>
 <%=link_to "Adicionar Resultado", disciplinas_path %>
 
+<div id="content-container" style="padding-top: 100px !important;">
+  <div id="content" class="clearfix">
+    <div id="main-content" class="no-sidebar">
+      <article class="static-page">
+        <div id="team-info" style="max-width: 20%;">
+	        <div style=" width: 185px; float: left; margin: 0 25px 0 0;">
+	            <% if @aluno.foto.file %>
+	            	<%= image_tag @aluno.foto.thumb.url %>
+	            <% end %>
+	            <span class="people-details p-people"><%=@aluno.nome%></span>
+	            <span class="people-details"><%=@aluno.curso.nome%></span>
+	            <span class="people-details"><%=@aluno.conta_creditos%> Créditos concluidos</span>
+	            <span class="people-details"><%=@aluno.creditos_faltantes%> Créditos a concluir</span>
+	            <span class="people-details"><%=link_to "Cadastrar Resultado", disciplinas_path %></span>
+	        </div>
+        </div>
+        <div id="team-container">
+          <h1>Resultados cadastrados:</h1>
+          <!--Edite a partir daqui -->
+          <%if @aluno.resultados.length > 0%>
+            <table>
+							<thead>
+								<tr>
+									<th>Semestre</th>
+									<th width=450>Nome</th>
+									<th>Menção</th>
+									<th>Comentário</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% Resultado.ordena_por_semestre(@aluno.resultados).reverse.each do |resultado| %>
+									<tr>
+										<td align="center"><%=resultado.semestre%></td>
+										<td width=550><%=resultado.disciplina.nome%></td>
+										<td align="center"><%=resultado.mencao%></td>
+										<td align="center"><%=resultado.comentario%></td>	
+									</tr>
+								<%end%>
+							</tbody>
+						</table>
+					<% else %>
+					Nenhum Resultado Cadastrado
+					<% end %>
+            <!--Fim da área de Edição -->
+        </div>
+    	</article>
+    </div>
+  </div>
+</div>

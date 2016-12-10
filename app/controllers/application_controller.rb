@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to '/login' unless current_user
+    #binding.pry
+    redirect_to '/login' unless current_user.id.to_i == params[:id].to_i
   end
 
 end

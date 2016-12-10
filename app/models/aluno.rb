@@ -2,6 +2,8 @@ require 'bcrypt'
 
 class Aluno < ActiveRecord::Base
   include BCrypt
+  mount_uploader :foto, ImageUploader
+
 
   belongs_to :curso
   has_many :resultados
@@ -64,4 +66,3 @@ class Aluno < ActiveRecord::Base
   end
 
 end
-

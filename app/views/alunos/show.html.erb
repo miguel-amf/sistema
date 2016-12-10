@@ -1,36 +1,3 @@
-Informações do Aluno: 
-<h3><%=@aluno.nome%></h3>
-
-<table>
-	<thead>
-		<tr>
-			<th>Semestre</th>
-			<th width=450>Nome</th>
-			<th>Menção</th>
-			<th>Comentário</th>
-		</tr>
-	</thead>
-	<tbody>
-<% Resultado.ordena_por_semestre(@aluno.resultados).reverse.each do |resultado| %>
-		<tr>
-			<td align="center"><%=resultado.semestre%></td>
-			<td width=550><%=resultado.disciplina.nome%></td>
-			<td align="center"><%=resultado.mencao%></td>
-			<td align="center"><%=resultado.comentario%></td>
-			
-		</tr>
-	<%end%>
-	</tbody>
-
-</table>
-<%@aluno.num_semestres = 3%>
-<h3>Você já concluiu: <%=@aluno.conta_creditos%> créditos </h3>
-<h3>Créditos faltantes: <%=@aluno.creditos_faltantes%> créditos </h3>
-<h3>Velocidade estimada no(s) último(s) <%=@aluno.num_semestres%> semestre(s): <%=@aluno.velocidade%> crédito(s) por semestre</h3>
-<h3>Tempo estimado para a conclusão do curso: <%=@aluno.tempo_estimado%> semestre(s)</h3>
-<br>
-<%=link_to "Adicionar Resultado", disciplinas_path %>
-
 <div id="content-container" style="padding-top: 100px !important;">
   <div id="content" class="clearfix">
     <div id="main-content" class="no-sidebar">
@@ -40,10 +7,13 @@ Informações do Aluno:
 	            <% if @aluno.foto.file %>
 	            	<%= image_tag @aluno.foto.thumb.url %>
 	            <% end %>
+	            <%@aluno.num_semestres = 3%>
 	            <span class="people-details p-people"><%=@aluno.nome%></span>
 	            <span class="people-details"><%=@aluno.curso.nome%></span>
 	            <span class="people-details"><%=@aluno.conta_creditos%> Créditos concluidos</span>
 	            <span class="people-details"><%=@aluno.creditos_faltantes%> Créditos a concluir</span>
+	            <span class="people-details"><%=@aluno.velocidade%> crédito(s) por semestre</span>
+	            <span class="people-details"><%=@aluno.tempo_estimado%> semestre(s) para concluir</span>
 	            <span class="people-details"><%=link_to "Cadastrar Resultado", disciplinas_path %></span>
 	        </div>
         </div>

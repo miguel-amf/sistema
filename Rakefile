@@ -16,6 +16,11 @@ task "get_data_cursos" do
   require './db/importa/importa_cursos.rb'
 end
 
+task "get_data_fluxos" do
+  require './db/importa/importa_fluxos.rb'
+end
+
 task "get_alunos" do
   require './db/geracao_dados/generate_data.rb'
 end
+

@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'csv'
 
 doc = Nokogiri::HTML(open("https://matriculaweb.unb.br/graduacao/curso_rel.aspx?cod=1"))
-#doc.encoding = 'utf-8'
+doc.encoding = 'utf-8'
 aa = doc.css('tr.PadraoMenor a')
 periodo = doc.css('tr.PadraoMenor').map { |e| e.css('td')[3].text  }
 modalidade = doc.css('tr.PadraoMenor').map { |e| e.css('td')[0].text  }
@@ -20,7 +20,6 @@ cursos = []
 bb.each_with_index do |link,indice|
   pagina = Nokogiri::HTML(open("https://matriculaweb.unb.br/graduacao/#{link}"), nil, 'utf-8')
   cursos = pagina.css('tr.PadraoBranco').map do |valor| valor.text end
-  puts cursos
   cursos.each_with_index {|val,index| 
     creditos << pagina.css('tr.Padrao')[3+7*index].text 
     periodos_cursos << periodo[indice]

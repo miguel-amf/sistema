@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205204952) do
+ActiveRecord::Schema.define(version: 20161211031957) do
 
   create_table "alunos", force: :cascade do |t|
     t.string  "nome"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 20161205204952) do
     t.string  "codigo"
     t.integer "creditos"
     t.string  "departamento"
+  end
+
+  create_table "item_fluxos", force: :cascade do |t|
+    t.integer  "periodo"
+    t.integer  "curso_id"
+    t.integer  "disciplina_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["curso_id"], name: "index_item_fluxos_on_curso_id"
+    t.index ["disciplina_id"], name: "index_item_fluxos_on_disciplina_id"
   end
 
   create_table "resultados", force: :cascade do |t|

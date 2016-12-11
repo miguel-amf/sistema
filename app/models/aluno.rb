@@ -42,27 +42,40 @@ class Aluno < ActiveRecord::Base
     #seleciona a quantidade máxima de semestres a serem pesquisados
     max = (self.semestres_unicos.count > @num_semestres ? @num_semestres : self.semestres_unicos.count)
 
-    #logger.debug semestres_unicos[0..max]
-
     #seleciona os resultados dos semestres selecionados
     r_selecionados = self.resultados.where ({semestre: semestres_unicos[0..max-1]})
-    r_selecionados.map { |r| logger.debug r.disciplina_id }
-
-    #calcula a quantidade de creditos solicitados pelo aluno nos semestres selecionados
-    #cred_solicitados = 0
-    #r_selecionados.map { |r| cred_solicitados += r.disciplina.creditos}
     
-    ##calcula a quantidade de creditos adquiridos pelo aluno nos semestres selecionados
+    #calcula a quantidade de creditos adquiridos pelo aluno nos semestres selecionados
     cred_adquiridos = 0
-    r_selecionados.map { |r| cred_adquiridos += r.disciplina.creditos if r.aprovado?; logger.debug r.aprovado? }
-    logger.debug cred_adquiridos
-
+    r_selecionados.map { |r| cred_adquiridos += r.disciplina.creditos if r.aprovado? }
+    
     #calcula a velocidade de aquisição de créditos nos semestres selecionados
     @velocidade = cred_adquiridos.fdiv(max)
   end
 
   def tempo_estimado
     creditos_faltantes.fdiv(@velocidade)
+  end
+
+  def posicao_fluxo
+    #seleciona somente os resultados com aprovação dos semestres 
+    r_aprovados = self.resultados.select { |r| r.aprovado?}
+
+    #gera a lista de códigos de disciplinas que o aluno já concluiu
+    id_dis_concluidas = r_aprovados.map { |r| r.disciplina.id}
+
+    #gera a lista dos itens de fluxo do curso das disciplinas que o aluno já passou
+    fluxos = self.curso.item_fluxos.where disciplina_id: id_dis_concluidas
+
+    #gera a lista de periodos destes itens de fluxo
+    cod_per = []
+    fluxos.each do | flx |
+      cod_per << flx.periodo
+    end
+
+    logger.debug cod_per
+
+    cod_per.uniq.max
   end
 
 end

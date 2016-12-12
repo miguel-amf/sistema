@@ -12,4 +12,6 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user.id.to_i == params[:id].to_i
   end
 
+
+
 end

@@ -1,11 +1,17 @@
 <h1><%= @disciplina.nome%></h1>
 <br>
+<% if current_user %>
+	<%= link_to "Adicionar Nota",
+			 new_aluno_resultado_path(:aluno_id => current_user.id,
+			 :disciplina_id => @disciplina.id)%>
+<% end %>
 <table>
 	<thead>
 		<tr>
 			<th>Semestre</th>
 			<th>Menção</th>
 			<th>Comentário</th>
+			<th>Curso do aluno</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -14,6 +20,10 @@
 			<td align="center"><%=resultado.semestre%></td>
 			<td align="center"><%=resultado.mencao%></td>
 			<td align="center"><%=resultado.comentario%></td>
+			<td align="center"><%=resultado.aluno.curso.nome%></td>
+			<% if resultado.aluno.id == current_user.id %>
+				<td align="center">Sua avaliação</td>
+			<% end %>
 			
 		</tr>
 	<%end%>

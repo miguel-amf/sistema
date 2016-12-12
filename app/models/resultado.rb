@@ -10,13 +10,8 @@ class Resultado < ActiveRecord::Base
     ["MM","MS","SS"].include?(self.mencao)
   end
   
-  def semestre_ordenavel
-    aa = self.semestre.partition("/")
-    aa[2] + " " + aa[0]
-  end
-  
   def self.ordena_por_semestre(resultados)
-    resultados.sort { |a,b| a.semestre_ordenavel <=> b.semestre_ordenavel }    
+    resultados.sort_by { |caso| caso.semestre }    
   end
   
 end

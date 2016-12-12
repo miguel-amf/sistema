@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :curso %>
-    <%= f.select(:curso, Curso.all.pluck("nome").map {|nome| nome} ) %>
+    <%= f.select(:curso, Curso.all.pluck("nome").sort_by {|nome| nome} ) %>
   </div>
 
   <div class="field">

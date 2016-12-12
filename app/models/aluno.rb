@@ -68,14 +68,10 @@ class Aluno < ActiveRecord::Base
     fluxos = self.curso.item_fluxos.where disciplina_id: id_dis_concluidas
 
     #gera a lista de periodos destes itens de fluxo
-    cod_per = []
-    fluxos.each do | flx |
-      cod_per << flx.periodo
-    end
+    lista = fluxos.map { |flx| flx.periodo }
 
-    logger.debug cod_per
-
-    cod_per.uniq.max
+    #retorna o maior 
+    lista.max
   end
 
 end

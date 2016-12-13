@@ -46,6 +46,8 @@ group :development, :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
+  gem "factory_girl_rails"
+  gem "guard-rspec"
   gem 'pry'
 end
 
@@ -62,3 +64,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+
+group :test do
+  gem "factory_girl_rails"
+  gem "guard-rspec"
+  gem 'rails-controller-testing'
+end

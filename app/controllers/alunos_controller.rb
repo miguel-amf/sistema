@@ -1,6 +1,6 @@
 class AlunosController < ApplicationController
   before_action :set_aluno, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize, :except => [:new, :create]
+  before_action :authorize, :except => [:new, :create]
 
 
   def new

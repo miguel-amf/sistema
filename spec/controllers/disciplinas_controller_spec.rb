@@ -4,7 +4,7 @@ RSpec.describe DisciplinasController, type: :controller do
 
   describe "Get index" do
     
-    it "direciona para página com todas as disciplinas" do
+    it "direciona para pagina com todas as disciplinas" do
       get :index, params: { id: 1}, session: { user_id: 1}
       expect(response).to render_template("index")
     end
@@ -19,13 +19,13 @@ RSpec.describe DisciplinasController, type: :controller do
 
   describe "Get show" do
 
-    it "exibe informações sobre disciplina escolhida" do
+    it "exibe informacoes sobre disciplina escolhida" do
       materia = FactoryGirl.create(:disciplina)
       get :show, params: {id: materia.id}
       expect(response).to render_template("show") 
     end
 
-    it "passa como variável a disciplina escolhida" do
+    it "passa como variavel a disciplina escolhida" do
       materia = FactoryGirl.create(:disciplina)
       get :show, params: {id: materia.id}
       expect(assigns(:disciplina)).to eq(materia)

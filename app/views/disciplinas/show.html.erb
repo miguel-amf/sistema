@@ -1,6 +1,6 @@
 <h1><%= @disciplina.nome%></h1>
 <br>
-<% if current_user %>
+<% if session[:user_id] %>
 	<%= link_to "Adicionar Nota",
 			 new_aluno_resultado_path(:aluno_id => current_user.id,
 			 :disciplina_id => @disciplina.id)%>

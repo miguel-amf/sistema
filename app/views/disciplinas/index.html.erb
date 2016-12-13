@@ -40,7 +40,7 @@
 			<td align="center"><%=turma.creditos%></td>
 			<td align="center"><%=turma.departamento.strip[13..70]%></td>
 			<td align="center"><%=turma.numero_avaliacoes%></td>
-			<% if current_user %>
+			<% if session[:user_id] %>
 				<td><%= link_to "Adicionar Nota",
 			 new_aluno_resultado_path(:aluno_id => current_user.id,
 			 :disciplina_id => turma.id)%></td>

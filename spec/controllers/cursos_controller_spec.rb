@@ -5,9 +5,6 @@ RSpec.describe CursosController, type: :controller do
 
   describe "get index" do
 
-    it "creates a new curso" do
-      expect{Curso.create.save}.to change{Curso.all.length}.by(1)
-    end
 
     it "passa a lista dos cursos" do
       curso = FactoryGirl.create(:curso)

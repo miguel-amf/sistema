@@ -24,7 +24,7 @@ FactoryGirl.define do
   end
 
   factory :curso do 
-    nome "Estatística"
+    nome "Estatistica"
     creditos 200
     codigo "0800"
     titulo "Bacharel"

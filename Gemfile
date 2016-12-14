@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
-
+gem 'simplecov', :require => false, :group => :test
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -3,8 +3,7 @@ require 'faker'
 possiveis_semestres = [] 
 anos = Array(2005..2016)
 semestres = [1,2]
-anos.each {|ano| semestres.map{|sem| possiveis_semestres << "#{sem}/" + "#{ano}" }}  
-possiveis_semestres
+anos.each {|ano| semestres.map{|sem| possiveis_semestres << "#{ano}/" + "#{sem}" }}  
 possiveis_cursos = Curso.all.pluck("id")
 possiveis_disciplinas = Disciplina.all.pluck("id")
 
@@ -13,7 +12,7 @@ i = 0
 200.times do 
   
   aluno = Aluno.new
-  aluno.nome = Faker::Name.name 
+  aluno.nome = "teste"+"#{i}"
   aluno.password_digest = "1234"
   # aluno.email = ["test",i].join("")
   aluno.email = Faker::Internet.email

@@ -4,12 +4,14 @@ Rails.application.routes.draw do
 
   resources :cursos
   resources :disciplinas
+  resources :fluxos
   
   resources :alunos, except: [:index] do
     resources :resultados
   end
 
   get '/login' => 'sessions#new'
+  get '/' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   

@@ -6,12 +6,13 @@ header = ["opcao","periodo","cod_dis"]
 sym_head = header.map { |head| head.to_sym}
 
 fluxos = []
-
+i = 0
 data.each do |row|
   fluxos << Hash[sym_head.zip(row)]
 end
 
 fluxos.each do |fluxo|
+	puts "hue"
 	#busco na base o curso associado a opção lida do .csv
 	c = Curso.find_by      codigo: fluxo[:opcao]
 

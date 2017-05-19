@@ -1,6 +1,6 @@
 require 'csv'
 
-data = CSV.read("./db/importa/cursos.csv")
+data = CSV.read("cursos.csv")
 
 header = ["codigo","nome","titulo","creditos","turno","modalidade"]
 sym_head = header.map { |head| head.to_sym}

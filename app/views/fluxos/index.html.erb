@@ -2,12 +2,6 @@
 	<thead>
 		<tr>
 			<th>
-				Período
-				<%= link_to "&#9660".html_safe, disciplinas_path({:sort_by => 'periodo', :sentido => 'DESC'}) %>
-				<%= link_to "&#9650".html_safe, disciplinas_path({:sort_by => 'periodo', :sentido => 'ASC'}) %>
-					
-				</th>
-			<th>
 				Código
 				<%= link_to "&#9660".html_safe, disciplinas_path({:sort_by => 'codigo', :sentido => 'DESC'}) %>
 				<%= link_to "&#9650".html_safe, disciplinas_path({:sort_by => 'codigo', :sentido => 'ASC'}) %>
@@ -43,7 +37,7 @@
 		<tr>
 			<td align="center"><%=turma.periodo%></td>
 			<td align="center"><%=turma.codigo%></td>
-			<td width=300><%= link_to turma.nome, disciplina_path({:id => "#{turma.id}"}) %></td>
+			<td width=550><%= link_to turma.nome, disciplina_path({:id => "#{turma.id}"}) %></td>
 			<td align="center"><%=turma.creditos%></td>
 			<td align="center"><%=turma.departamento.strip[13..70]%></td>
 			<td align="center"><%=turma.numero_avaliacoes%></td>
@@ -51,8 +45,7 @@
 				<td><%= link_to "Adicionar Nota",
 			 new_aluno_resultado_path(:aluno_id => current_user.id,
 			 :disciplina_id => turma.id)%></td>
-			<% end %>
-			
+			<% end %>			
 		</tr>
 	<%end%>
 	</tbody>

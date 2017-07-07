@@ -7,4 +7,5 @@ class Disciplina < ActiveRecord::Base
     self.resultados.length
   end
 
+
 end

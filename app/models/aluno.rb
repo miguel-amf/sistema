@@ -22,7 +22,8 @@ class Aluno < ActiveRecord::Base
   end  
 
   def conta_creditos
-    cred = self.resultados.select {|resultado| resultado.aprovado? }.inject(0) { |soma,x| soma + x.disciplina.creditos}
+    0
+    #cred = self.resultados.select {|resultado| resultado.aprovado? }.inject(0) { |soma,x| soma + x.disciplina.creditos}
   end
 
   def creditos_faltantes

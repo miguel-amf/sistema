@@ -12,10 +12,14 @@ end
 
 def index
   #binding.pry
-  current_user.curso_id
-  fluxos = ItemFluxo.where(:curso_id => current_user[:curso_id])
+  fluxos = ItemFluxo.all;
   disc = []
   discEPeriodo = []
+  if current_user != nil
+    current_user.curso_id
+    fluxos = ItemFluxo.where(:curso_id => current_user[:curso_id])
+  end
+  
   fluxos.each do |flux|
     disc << flux[:disciplina_id]
   end
@@ -33,7 +37,6 @@ def index
       end
     else
       if params[:sort_by] == "periodo"
-        puts "ENTREI NO PERIODODODODODODODO"
         @disciplinas = Disciplina.where(:id => disc)
         @disciplinas.each do |disciplina|
           fluxos.each do |flux|
@@ -56,15 +59,15 @@ def index
       end  
     end
   else
-    puts "ENTREI NO NOMEEEEEEEEEEEEEEEE"
-    @disciplinas = Disciplina.where(:id => disc).sort_by {|disciplina| disciplina.nome}
+    @disciplinas = Disciplina.where(:id => disc)
     @disciplinas.each do |disciplina|
       fluxos.each do |flux|
         if flux.disciplina_id == disciplina.id
           disciplina.periodo = flux.periodo
         end
       end
-    end       
+    end
+    @disciplinas = @disciplinas.sort_by(&:periodo)    
   end
 end
 

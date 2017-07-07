@@ -16,6 +16,10 @@
 	            <span class="people-details"><%="%10.3g" % @aluno.tempo_estimado%> semestre(s) para concluir</span>
 	            <span class="people-details">Posição no fluxo: período <%=@aluno.posicao_fluxo%></span>
 	            <span class="people-details"><%=link_to "Cadastrar Resultado", disciplinas_path %></span>
+	            <%= form_tag '/cursos/atualizaTxt', :multipart => true do %>
+   					<%= file_field_tag "file" %>
+   					<%= submit_tag %>
+				<% end %>
 	        </div>
         </div>
         <div id="team-container">

@@ -36,14 +36,46 @@ Given(/^I am on the home page$/) do
   visit "/"
 end
 
+Given(/^I am on the cursos page$/) do
+  visit "/cursos"
+end
+
+
 Then(/^I should fill in "([^"]*)" with "([^"]*)"$/) do |campo, valor|
   fill_in(campo, :with => valor)
 end
 
-Then(/^I press "([^"]*)"$/) do |botao|
-  click_button(botao)
+Then(/^I submit$/) do
+	page.should have_selector("input[type=submit][value='Entrar']")
+	page.find("input[type=submit][value='Entrar']").click
+	sleep(0.25)
 
 end
+
+Then(/^I should read in "([^"]*)" the string "([^"]*)"$/) do |campo, valor|
+  expect(find_field(campo).value).to eq valor
+end
+
+
+Given(/^I am logged in with "([^"]*)" and "([^"]*)" as values$/) do |login, password|
+  	fill_in("nome", :with => login)
+  	fill_in("senha", :with => password)
+	page.find("input[type=submit][value='Entrar']").click
+	sleep(0.25)
+end
+
+Then(/^I click in "([^"]*)"$/) do |arg1|
+  find_link(arg1).click
+  sleep(0.25)
+end
+
+
+Then(/^i should not see "([^"]*)"$/) do |entrada|
+  page.should have_no_selector(entrada)
+end
+
+
+
 
 Then(/^I should be in "([^"]*)"$/) do |pagina|
   expect(current_path).to eq pagina
@@ -55,6 +87,17 @@ Given(/^I am on the Disciplinas page$/) do
 end
 
 Then(/^I should see "([^"]*)" as a element$/) do |codigo|
-  find_field(codigo)
+  page.all(codigo)
 end
 
+Then(/^I insert "([^"]*)" as nome, "([^"]*)" as codigo, "([^"]*)" as titulo, "([^"]*)" as credito$/) do |nome, codigo, titulo, credito|
+   	fill_in("curso_nome", :with => nome)
+   	fill_in("curso_codigo", :with => codigo)
+   	fill_in("curso_titulo", :with => titulo)
+   	fill_in("curso_creditos", :with => credito)
+end
+
+Then(/^I submit the curso$/) do
+  	page.find("input[type=submit][value='Adicionar curso']").click
+	sleep(0.25)
+end
